@@ -1,0 +1,13 @@
+# 本地开发配置示例
+# 复制此文件为 application-local.yml 并填入真实值
+# 注意：application-local.yml 已在 .gitignore 中，不会被提交
+
+spring:
+  datasource:
+    password: xuanxuan0513  # 替换为你的数据库密码
+
+jwt:
+  secret: cloudbrain-neusoft-2026-jwt-secret-key  # 替换为你的 JWT 密钥
+
+deepseek:
+  api-key: sk-01cd69733129433fa07f73b7721c8cb0  # 替换为你的 DeepSeek API Key
