@@ -34,10 +34,10 @@ public class RegistrationController {
         return CommonResult.success(list);
     }
 
-    @PostMapping("/cancel")
+    @PostMapping("/cancel/{id}")
     @Operation(summary = "取消挂号", description = "患者取消自己的挂号记录")
-    public CommonResult<RegistrationResponse> cancel(@RequestParam Long registrationId, @RequestParam Long patientId) {
-        RegistrationResponse response = registrationService.cancelRegistration(registrationId, patientId);
+    public CommonResult<RegistrationResponse> cancel(@PathVariable Long id, @RequestParam Long patientId) {
+        RegistrationResponse response = registrationService.cancelRegistration(id, patientId);
         return CommonResult.success("取消成功", response);
     }
 }

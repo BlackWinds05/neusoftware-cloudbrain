@@ -37,10 +37,10 @@ public class PrescriptionController {
         return CommonResult.success("处方创建成功", toResponse(prescription));
     }
 
-    @PostMapping("/check")
+    @PostMapping("/check/{id}")
     @Operation(summary = "AI审核处方", description = "AI审核处方用药安全")
-    public CommonResult<PrescriptionResponse.AiCheckResult> check(@RequestParam Long prescriptionId) {
-        Map<String, Object> result = prescriptionService.checkPrescriptionByAi(prescriptionId);
+    public CommonResult<PrescriptionResponse.AiCheckResult> check(@PathVariable Long id) {
+        Map<String, Object> result = prescriptionService.checkPrescriptionByAi(id);
 
         PrescriptionResponse.AiCheckResult aiResult = PrescriptionResponse.AiCheckResult.builder()
                 .checkResult((String) result.get("checkResult"))

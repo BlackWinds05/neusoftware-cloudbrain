@@ -1,9 +1,6 @@
 package com.neusoft.cloudbrain.controller;
 
-import com.neusoft.cloudbrain.dto.CommonResult;
-import com.neusoft.cloudbrain.dto.LoginResponse;
-import com.neusoft.cloudbrain.dto.PatientLoginRequest;
-import com.neusoft.cloudbrain.dto.PatientRegisterRequest;
+import com.neusoft.cloudbrain.dto.*;
 import com.neusoft.cloudbrain.service.PatientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,14 +22,18 @@ public class PatientController {
     @PostMapping("/register")
     @Operation(summary = "患者注册")
     public CommonResult<LoginResponse> register(@Valid @RequestBody PatientRegisterRequest request) {
-        LoginResponse response = patientService.register(request);
-        return CommonResult.success(response);
+        return CommonResult.success(patientService.register(request));
     }
 
     @PostMapping("/login")
-    @Operation(summary = "患者登录")
+    @Operation(summary = "患者登录（用户名+密码）")
     public CommonResult<LoginResponse> login(@Valid @RequestBody PatientLoginRequest request) {
-        LoginResponse response = patientService.login(request);
-        return CommonResult.success(response);
+        return CommonResult.success(patientService.login(request));
+    }
+
+    @PostMapping("/login/phone")
+    @Operation(summary = "患者登录（姓名+手机号+密码）")
+    public CommonResult<LoginResponse> loginByPhone(@Valid @RequestBody PhoneLoginRequest request) {
+        return CommonResult.success(patientService.loginByPhone(request));
     }
 }

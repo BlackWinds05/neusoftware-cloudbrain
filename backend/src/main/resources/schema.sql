@@ -37,6 +37,8 @@ CREATE TABLE doctor (
     phone VARCHAR(20) COMMENT '手机号',
     avatar VARCHAR(255) COMMENT '头像',
     introduction TEXT COMMENT '简介',
+    status VARCHAR(20) DEFAULT 'APPROVED' COMMENT '审核状态: PENDING/APPROVED/REJECTED',
+    reject_reason VARCHAR(255) COMMENT '拒绝原因',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='医生表';
@@ -111,9 +113,9 @@ CREATE TABLE prescription_check (
     FOREIGN KEY (prescription_id) REFERENCES prescription(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='处方审核表';
 
-INSERT INTO doctor (username, password, name, gender, age, department, title, hospital, phone) VALUES
-('doctor1', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '王明', '男', 45, '心内科', '主任医师', '东软医院', '13800138001'),
-('doctor2', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '李芳', '女', 38, '呼吸内科', '副主任医师', '东软医院', '13800138002'),
-('doctor3', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '张勇', '男', 50, '骨科', '主任医师', '东软医院', '13800138003'),
-('doctor4', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '陈静', '女', 35, '儿科', '主治医师', '东软医院', '13800138004'),
-('doctor5', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '刘伟', '男', 42, '神经内科', '副主任医师', '东软医院', '13800138005');
+INSERT INTO doctor (username, password, name, gender, age, department, title, hospital, phone, status) VALUES
+('doctor1', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '王明', '男', 45, '心内科', '主任医师', '东软医院', '13800138001', 'APPROVED'),
+('doctor2', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '李芳', '女', 38, '呼吸内科', '副主任医师', '东软医院', '13800138002', 'APPROVED'),
+('doctor3', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '张勇', '男', 50, '骨科', '主任医师', '东软医院', '13800138003', 'APPROVED'),
+('doctor4', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '陈静', '女', 35, '儿科', '主治医师', '东软医院', '13800138004', 'APPROVED'),
+('doctor5', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '刘伟', '男', 42, '神经内科', '副主任医师', '东软医院', '13800138005', 'APPROVED');

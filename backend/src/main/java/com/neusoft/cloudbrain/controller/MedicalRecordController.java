@@ -70,9 +70,9 @@ public class MedicalRecordController {
         return CommonResult.success(responses);
     }
 
-    @GetMapping("/detail")
+    @GetMapping("/detail/{id}")
     @Operation(summary = "病历详情", description = "获取病历详情")
-    public CommonResult<MedicalRecordResponse> detail(@RequestParam Long id) {
+    public CommonResult<MedicalRecordResponse> detail(@PathVariable Long id) {
         MedicalRecord record = medicalRecordService.getMedicalRecordDetail(id);
         return CommonResult.success(toResponse(record));
     }
