@@ -30,10 +30,20 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             "/webjars/**",
             "/favicon.ico",
             "/",
+            "/api/auth/**",
             "/api/patient/register",
             "/api/patient/login",
+            "/api/patient/login/phone",
             "/api/doctor/list",
             "/api/doctor/detail",
+            "/api/doctor/login",
+            "/api/doctor/login/phone",
+            "/api/doctor/register",
+            "/api/doctor/status",
+            "/api/doctor/pending",
+            "/api/doctor/all-with-status",
+            "/api/doctor/approve",
+            "/api/doctor/reject",
             "/api/triage/consult",
             "/api/registration/create",
             "/api/registration/list",
@@ -43,9 +53,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             "/api/medical-record/list",
             "/api/medical-record/detail",
             "/api/prescription/create",
-            "/api/prescription/check",
+            "/api/prescription/check/**",
             "/api/prescription/list",
-            "/api/prescription/detail"
+            "/api/prescription/detail",
+            "/api/prescription/detail/**"
     );
 
     @Override
